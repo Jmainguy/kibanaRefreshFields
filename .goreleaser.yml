@@ -1,0 +1,45 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    # you may remove this if you don't use vgo
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    #- go generate ./...
+builds:
+- env:
+  - CGO_ENABLED=0
+  goos:
+    - linux
+    - darwin
+    - windows
+  goarch:
+    - amd64
+archives:
+- name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    amd64: x86_64
+  format_overrides:
+  - goos: windows
+    format: zip
+nfpms:
+- name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  homepage:  https://soh.re
+  description: Update kibana index fields
+  maintainer: Jonathan Seth Mainguy <jon@soh.re>
+  license: GPLv2
+  vendor: Jmainguy
+  formats:
+  - deb
+  - rpm
+checksum:
+  name_template: 'checksums.txt'
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'

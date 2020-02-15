@@ -1,0 +1,7 @@
+{
+  "attributes": {
+    "title": "jmainguy-*",
+    "timeFieldName": "@timestamp",
+    "fields": "[{\"name\":\"flow.bytes\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true}]",
+  }
+}
