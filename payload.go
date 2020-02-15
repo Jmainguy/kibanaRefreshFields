@@ -20,7 +20,7 @@ func formatPayload(fieldList *FieldList) (body io.Reader) {
 	payload.Attributes.Fields = "["
 	if kibanaFilter != "" {
 		fmt.Printf("Filtering out %s\n", kibanaFilter)
-    }
+	}
 	for _, v := range fieldList.Fields {
 		// If you want to filter out some fields
 		if kibanaFilter != "" {
