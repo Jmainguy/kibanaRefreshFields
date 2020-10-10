@@ -9,6 +9,10 @@ export KIBANA_URL=logs-lab.example.com
 export KIBANA_INDEX="filebeat-*"
 # Optional, if you want to filter out some fields
 export KIBANA_FILTER="kubernetes.labels.jenkins"
+# Optional, if you want to connect with a spefic tls certificate
+export KIBANA_CERT="/tmp/self_signed.crt"
+# Optional, if you want to connect without verifying the TLS security, simliar to curl -k
+export KIBANA_INSECURE="true"
 ```
 
 ## Usage
