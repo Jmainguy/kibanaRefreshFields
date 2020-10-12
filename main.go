@@ -14,14 +14,12 @@ func check(err error) {
 
 func main() {
 
-	username := os.Getenv("KIBANA_USERNAME")
-	password := os.Getenv("KIBANA_PASSWORD")
-	kibanaUrl := os.Getenv("KIBANA_URL")
-	kibanaIndex := os.Getenv("KIBANA_INDEX")
+	config, err := getConfig()
+	check(err)
 
-	fieldList := getFields(username, password, kibanaUrl, kibanaIndex)
+	fieldList := getFields(config)
 
-	body := formatPayload(fieldList)
+	body := formatPayload(fieldList, config)
 
-	submitPayload(username, password, kibanaUrl, kibanaIndex, body)
+	submitPayload(config, body)
 }

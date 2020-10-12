@@ -1,0 +1,28 @@
+on:
+    push:
+
+name: push
+jobs:
+    test_build:
+        name: test, build
+        runs-on: ubuntu-latest
+        steps:
+          - name: install go
+            uses: actions/setup-go@v2.1.2
+            with:
+              go-version: '1.14.9'
+
+          - name: git checkout
+            uses: actions/checkout@v2.3.2
+
+          - name: install lint
+            run: GO111MODULE=off go get golang.org/x/lint/golint
+
+          - name: run golint and go fmt
+            run: ./tests/fmtlint.sh
+
+          - name: go test
+            run: go test
+
+          - name: go build
+            run: go build
