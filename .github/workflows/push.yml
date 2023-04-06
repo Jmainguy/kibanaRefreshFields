@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: install go
-            uses: actions/setup-go@v2.1.2
+            uses: actions/setup-go@v2.2.0
             with:
               go-version: '1.14.9'
 
