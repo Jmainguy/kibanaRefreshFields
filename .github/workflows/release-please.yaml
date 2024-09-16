@@ -1,0 +1,12 @@
+name: Call Reusable Golang Release-Please Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    uses: Jmainguy/golang-workflows/.github/workflows/golang-release.yml@v1
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
