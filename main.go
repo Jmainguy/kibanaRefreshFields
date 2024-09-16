@@ -17,9 +17,5 @@ func main() {
 	config, err := getConfig()
 	check(err)
 
-	fieldList := getFields(config)
-
-	body := formatPayload(fieldList, config)
-
-	submitPayload(config, body)
+	submitPayload(config)
 }

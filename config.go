@@ -2,7 +2,6 @@ package main
 
 import (
 	"crypto/x509"
-	"io/ioutil"
 	"os"
 )
 
@@ -35,7 +34,7 @@ func getConfig() (config Config, err error) {
 
 	if config.Certificate != "" {
 
-		certificate, err := ioutil.ReadFile(config.Certificate)
+		certificate, err := os.ReadFile(config.Certificate)
 		if err != nil {
 			return config, err
 		}
