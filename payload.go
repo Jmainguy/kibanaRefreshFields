@@ -29,7 +29,11 @@ func curl(config Config, url, requestMethod string) (bodyBytes []byte) {
 	req.Header.Set("Kbn-Xsrf", "true")
 	resp, err := http.DefaultClient.Do(req)
 	check(err)
-	defer resp.Body.Close()
+	defer func() {
+		if cerr := resp.Body.Close(); cerr != nil {
+			check(cerr)
+		}
+	}()
 
 	bodyBytes, err = io.ReadAll(resp.Body)
 	check(err)
